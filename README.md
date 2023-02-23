@@ -7,7 +7,6 @@ This is a multpurpose Qlik Sense and Qlik View scripts.
 - [Welcome](https://github.com/andressousa/as-qliksense-scripts#welcome-to-as-qliksense-scripts-and-tips)
 - [CPF Validation (Brazilian)](https://github.com/andressousa/as-qliksense-scripts#cpf-validation-brazilian)
 - [CNPJ Validation (Brazilian)](https://github.com/andressousa/as-qliksense-scripts#cnpj-validation-brazilian)
-https://github.com/andressousa/as-qliksense-scripts/edit/main/README.md#cpf-validation-brazilian
 
 ### CPF Validation (Brazilian)
 Checks if the CPF number is valid according to the document standard.

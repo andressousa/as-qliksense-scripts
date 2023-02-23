@@ -10,13 +10,13 @@ This is a multpurpose Qlik Sense and Qlik View scripts.
 
 ### CPF Validation (Brazilian)
 Checks if the CPF number is valid according to the document standard.
-- [See script](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/valida_cpf.qvs)
+[See script](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/valida_cpf.qvs)
 
 [Back to Top](https://github.com/andressousa/as-qliksense-scripts#welcome-to-as-qliksense-scripts-and-tips)
 
 ### CNPJ Validation (Brazilian)
 Checks if the CNPJ number is valid according to the document standard.
-- [See script](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/valida_cnpj.qvs)
+[See script](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/valida_cnpj.qvs)
 
 [Back to Top](https://github.com/andressousa/as-qliksense-scripts#welcome-to-as-qliksense-scripts-and-tips)
 

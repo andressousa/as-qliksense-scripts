@@ -1,0 +1,38 @@
+/*
+  - Open ODBC Administrator on Windows 
+  - Create new ODBC Connection with Microsoft Excel Driver
+  - Create ODBC connection in Qlik Sense
+*/
+
+// Connect to data source
+LIB CONNECT TO 'Desktop';
+
+// load metadata from spreadsheets
+[TABLES]:
+SQLTables;
+
+
+// create a list with all sheet names in a variable
+[SHEETS]:
+LOAD Chr(39) & Concat( [TABLE_NAME], Chr(39) & ',' & Chr(39) ) & Chr(39)  AS SHEETS
+Resident [TABLES];
+
+LET vSheets = FieldValue('SHEETS', 1);
+Drop Tables [SHEETS], [TABLES];
+
+
+// load each sheet
+For Each vSheet in $(vSheets)
+
+  [DADOS]:
+  LOAD
+  	'$(vSheet)' as Sheet,
+    field_name;
+  SQL SELECT cpf
+  FROM `C:\your\file\path\Filename.xlsx`.`$(vSheet)`;
+
+Next;
+
+// clear sheet list
+LET vSheets = '';
+

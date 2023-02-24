@@ -11,3 +11,5 @@ This is a multpurpose Qlik Sense and Qlik View scripts.
   - [CPF Mask (Brazilian)](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/mascara_cpf.qvs)
   - [CNPJ Mask (Brazilian)](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/mascara_cnpj.qvs)
   - [Phone Mask (Brazilian)](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/mascara_telefone.qvs)
+- Other
+  - [Load all XLS Sheets](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/carrega_planilhas.qvs)

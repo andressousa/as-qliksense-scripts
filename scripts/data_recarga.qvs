@@ -1,0 +1,11 @@
+// no script
+LET vDataHoraDados		= Date( ConvertToLocalTime( Now(), 'Brasilia', True ), 'DD/MM/YYYY hh:mm:ss');
+SET vTempoAtualizacao 	= '=Today() - Floor(vDataHoraDados)';
+
+//Na medida
+'Atualizado ' &
+if( $(vTempoAtualizacao) = 0, 'hoje às ' & Hour(vDataHoraDados) & 'h',
+if( $(vTempoAtualizacao) = 1, 'ontem às ' & Hour(vDataHoraDados) & 'h',
+if( $(vTempoAtualizacao) > 1 and $(vTempoAtualizacao) < 7, 'há ' & $(vTempoAtualizacao) & ' dias',
+Date(vDataHoraDados, 'WWWW') & ', ' & Date(vDataHoraDados) & ' às ' & Hour(vDataHoraDados) & 'h'
+)))

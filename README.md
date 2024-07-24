@@ -13,5 +13,5 @@ This is a multpurpose Qlik Sense and Qlik View scripts.
   - [Phone Mask (Brazilian)](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/mascara_telefone.qvs)
 - Other
   - [Load all XLS Sheets](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/carrega_planilhas.qvs)
-  - [save Data from QVF File](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/salvar_dados_qvf.qvs)
+  - [Save Data from QVF File](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/salvar_dados_qvf.qvs)
   - [Copy QVD/CSV Through Spaces](https://github.com/andressousa/as-qliksense-scripts/blob/main/scripts/move_arquivo.qvs)

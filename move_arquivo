@@ -1,0 +1,70 @@
+//Conexão de origem
+LET Origem   = 'lib://ORIGEM:DataFiles';
+
+//Conexão de destino
+LET Destino  = 'lib://DESTINO:DataFiles';
+
+//#############################################
+//  Iteração no espaço de origem para obter
+//  a lista de arquivos.
+//#############################################
+For Each File in FileList ('$(Origem)/*')
+
+  [ARQUIVOS]:
+  Load *;
+  Load Subfield('$(File)', '/', -1) as [ARQUIVO]
+  AutoGenerate 1;
+
+Next File;
+
+//#############################################
+//  Iteração no espaço de origem para leitura
+//  de arquivos.
+//#############################################
+FOR Each Arquivo in FieldValueList('ARQUIVO')
+
+  //Obtendo a extensão do arquivo
+  LET Extensao = SubField( '$(Arquivo)', '.', -1 );
+
+  //Quando o arquivo for qvd...
+  IF Upper(Extensao) = 'QVD' then
+
+      [DADOS]:
+      LOAD * from [$(Origem)/$(Arquivo)](qvd);
+    
+    If NoOfRows('DADOS') > 0 then
+      Store [DADOS] into [$(Destino)/$(Arquivo)](qvd);
+    End if;
+
+  //Quando o arquivo for csv...
+  elseif Upper(Extensao) = 'CSV' then
+  
+    //Leitura do cabeçalho para obter o separador de colunas
+    [CSV]:
+    First 1 LOAD [@1:n] as Header
+    FROM [$(Origem)/$(Arquivo)]
+    (fix, codepage is 1252);
+  
+    //Capturando o separador de colunas
+    Let Sep = Left( KeepChar( Peek( 'Header', 0 ), ',;' ), 1 );
+    Drop Table [CSV];
+  
+    [DADOS]:
+    LOAD * from [$(Origem)/$(Arquivo)]
+    (txt, utf8, embedded labels, delimiter is '$(Sep)', msq);
+
+    If NoOfRows('DADOS') > 0 then
+      Store [DADOS] into [$(Destino)/$(Arquivo)](txt, delimiter is '$(Sep)');
+    End if;
+
+  Else
+    Trace Arquivo não suportado: $(Extensao);
+  End if;
+
+  If Not IsNull( TableNumber('DADOS') ) THEN
+    Drop Table [DADOS];
+  End if;
+
+NEXT Arquivo;
+
+Drop Table [ARQUIVOS];
